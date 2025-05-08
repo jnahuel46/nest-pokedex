@@ -9,6 +9,25 @@
 - **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
 - **MongoDB**: A NoSQL database used for storing Pokémon data.
 
+## Setup and Running Instructions
+
+1. Install dependencies:
+```bash
+$ pnpm install
+```
+
+2. Start MongoDB using Docker Compose:
+```bash
+$ docker-compose up -d
+```
+
+3. Start the development server:
+```bash
+$ pnpm start:dev
+```
+
+The application will be available at `http://localhost:3000/api/v2`
+
 ## Running the Project with Docker Compose
 
 To run the project using Docker Compose, ensure you have Docker and Docker Compose installed on your machine. Then, execute the following command:
