@@ -9,6 +9,7 @@ import {
   NotFoundException,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class PokemonService {
@@ -27,8 +28,15 @@ export class PokemonService {
     }
   }
 
-  async findAll() {
-    const pokemon = await this.pokemonModel.find();
+  async findAll(paginationDto: PaginationDto) {
+    const { limit = 10, offset = 0 } = paginationDto;
+    const pokemon = await this.pokemonModel
+      .find()
+      .limit(limit)
+      .skip(offset)
+      .sort({
+        no: 1,
+      });
     return pokemon;
   }
 
@@ -81,5 +89,13 @@ export class PokemonService {
     throw new InternalServerErrorException(
       `Can't create Pokemon - Check server logs`,
     );
+  }
+
+  async deleteMany() {
+    await this.pokemonModel.deleteMany();
+  }
+
+  async insertMany(pokemonToInsert: { name: string; no: number }[]) {
+    await this.pokemonModel.insertMany(pokemonToInsert);
   }
 }

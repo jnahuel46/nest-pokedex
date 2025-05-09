@@ -26,6 +26,11 @@ $ docker-compose up -d
 $ pnpm start:dev
 ```
 
+4. (Optional) Populate the database with Pokémon data:
+```bash
+$ pnpm start:dev -- --seed
+```
+
 The application will be available at `http://localhost:3000/api/v2`
 
 ## Running the Project with Docker Compose
@@ -59,10 +64,22 @@ All endpoints are prefixed with `/api/v2`
 - `DELETE /pokemon/:id` - Delete a Pokémon
   - Validates MongoDB ID using custom pipe
 
+### Seed Endpoint
+
+- `GET /seed` - Populate the database with Pokémon data from PokeAPI
+  - Uses the HTTP adapter to fetch data
+  - Inserts 440 Pokémon records
+
 ## Features
 
 ### Custom Pipes
 - `ParseMongoIdPipe`: Validates if the provided ID is a valid MongoDB ObjectId
+
+### Adapters
+- `FetchAdapter`: Custom HTTP adapter implementing the `HttpAdapter` interface
+  - Provides a generic `get<T>` method for type-safe HTTP requests
+  - Used for fetching data from external APIs (PokeAPI)
+  - Handles error cases and response parsing
 
 ### Global Configuration
 - Global prefix: `/api/v2`
@@ -81,4 +98,5 @@ The project currently includes the following modules:
 
 - **AppModule**: The root module of the application.
 - **PokemonModule**: Handles operations related to Pokémon, including controllers and services for managing Pokémon data.
-- **CommonModule**: Contains shared functionality and custom pipes.
+- **CommonModule**: Contains shared functionality, custom pipes, and the HTTP adapter.
+- **SeedModule**: Handles database seeding with Pokémon data from PokeAPI.
