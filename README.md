@@ -181,3 +181,24 @@ The project currently includes the following modules:
 - Pagination for large data sets
 - Caching strategies (if implemented)
 - Query optimization through MongoDB Compass analysis
+
+## API Documentation
+
+The API documentation is available through Swagger UI at:
+- Development: `http://localhost:3000/api/docs`
+- Production: `[Your Railway URL]/api/docs`
+
+### Documentation Features
+- Interactive API documentation
+- Try-it-out functionality
+- Request/Response examples
+- Schema validation
+- Authentication support
+- Detailed endpoint descriptions
+- Response codes and descriptions
+
+### Documentation Sections
+- **Pokemon Endpoints**: All CRUD operations for Pokemon management
+- **Seed Endpoint**: Database population endpoint
+- **Models**: Data transfer objects (DTOs) and their schemas
+- **Authentication**: (If implemented) Authentication methods and requirements
