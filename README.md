@@ -23,7 +23,8 @@ The application is deployed on Railway, a modern cloud platform that provides:
 - Custom domain support
 
 ### Production Environment
-- **API URL**: [Your Railway URL]
+- **API URL**: https://nest-pokedex-production-b874.up.railway.app
+- **API Documentation**: https://nest-pokedex-production-b874.up.railway.app/api/docs
 - **Database**: MongoDB Atlas (managed through Railway)
 - **Environment**: Production with optimized settings
 
@@ -186,7 +187,7 @@ The project currently includes the following modules:
 
 The API documentation is available through Swagger UI at:
 - Development: `http://localhost:3000/api/docs`
-- Production: `[Your Railway URL]/api/docs`
+- Production: `https://nest-pokedex-production-b874.up.railway.app/api/docs`
 
 ### Documentation Features
 - Interactive API documentation
