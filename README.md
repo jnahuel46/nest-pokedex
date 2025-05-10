@@ -203,3 +203,39 @@ The API documentation is available through Swagger UI at:
 - **Seed Endpoint**: Database population endpoint
 - **Models**: Data transfer objects (DTOs) and their schemas
 - **Authentication**: (If implemented) Authentication methods and requirements
+
+## Bonus: Docker Production Deployment
+
+### Prerequisites
+- Docker and Docker Compose installed
+- `.env.prod` file with production environment variables
+- `docker-compose.prod.yaml` file
+
+### Production Environment Variables
+Create a `.env.prod` file with your production variables:
+```env
+MONGODB=mongodb://your-production-mongodb-url
+PORT=3000
+POKEAPI=https://pokeapi.co/api/v2/pokemon?limit=440
+```
+
+### Docker Production Commands
+
+#### Build and Run
+To build and start the production containers:
+```bash
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+#### Run Only
+To start the production containers (if already built):
+```bash
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
+```
+
+### Production Features
+- Multi-stage Docker build for optimized image size
+- Production-ready environment configuration
+- Secure environment variable handling
+- Optimized for production performance
+- Uses pnpm for dependency management
