@@ -8,6 +8,43 @@
 
 - **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
 - **MongoDB**: A NoSQL database used for storing Pokémon data.
+- **ConfigModule**: For environment variable management.
+- **MongoDB Compass**: GUI for MongoDB database management and visualization.
+- **Railway**: Cloud platform for application deployment and hosting.
+
+## Deployment
+
+The application is deployed on Railway, a modern cloud platform that provides:
+- Automatic deployments from Git
+- Built-in CI/CD pipeline
+- Environment variable management
+- MongoDB database hosting
+- SSL/TLS encryption
+- Custom domain support
+
+### Production Environment
+- **API URL**: [Your Railway URL]
+- **Database**: MongoDB Atlas (managed through Railway)
+- **Environment**: Production with optimized settings
+
+### Database Management
+MongoDB Compass is used for database management, providing:
+- Real-time database monitoring
+- CRUD operations through GUI
+- Query performance analysis
+- Index management
+- Data visualization
+- Schema validation
+
+## Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+MONGODB=mongodb://localhost:27017/nest-pokemon
+PORT=3000
+POKEAPI=https://pokeapi.co/api/v2/pokemon?limit=440
+```
 
 ## Setup and Running Instructions
 
@@ -16,22 +53,45 @@
 $ pnpm install
 ```
 
-2. Start MongoDB using Docker Compose:
+2. Create the `.env` file as shown above
+
+3. Start MongoDB using Docker Compose:
 ```bash
 $ docker-compose up -d
 ```
 
-3. Start the development server:
+4. Start the development server:
 ```bash
 $ pnpm start:dev
 ```
 
-4. (Optional) Populate the database with Pokémon data:
+5. (Optional) Connect to MongoDB Compass:
+   - Open MongoDB Compass
+   - Use connection string: `mongodb://localhost:27017`
+   - Select database: `nest-pokemon`
+
+6. (Optional) Populate the database with Pokémon data:
 ```bash
 $ pnpm start:dev -- --seed
 ```
 
 The application will be available at `http://localhost:3000/api/v2`
+
+## Development Tools
+
+### MongoDB Compass Features Used
+- **Data Explorer**: For direct database manipulation
+- **Performance Advisor**: To optimize query performance
+- **Schema Analysis**: For data structure validation
+- **Index Management**: To maintain optimal query performance
+- **Real-time Monitoring**: For database health checks
+
+### Railway Deployment Features
+- **Automatic Deployments**: Triggered by Git pushes
+- **Environment Variables**: Securely managed through Railway dashboard
+- **Log Management**: Real-time application logs
+- **Metrics**: Application performance monitoring
+- **Database Backups**: Automated MongoDB backups
 
 ## Running the Project with Docker Compose
 
@@ -100,3 +160,24 @@ The project currently includes the following modules:
 - **PokemonModule**: Handles operations related to Pokémon, including controllers and services for managing Pokémon data.
 - **CommonModule**: Contains shared functionality, custom pipes, and the HTTP adapter.
 - **SeedModule**: Handles database seeding with Pokémon data from PokeAPI.
+
+## Technical Implementation Details
+
+### Database Architecture
+- MongoDB Atlas for production
+- Local MongoDB for development
+- Indexed fields for optimized queries
+- Schema validation for data integrity
+
+### Security Measures
+- Environment variables for sensitive data
+- MongoDB authentication
+- SSL/TLS encryption
+- Input validation through DTOs
+- Rate limiting (if implemented)
+
+### Performance Optimizations
+- Database indexing on frequently queried fields
+- Pagination for large data sets
+- Caching strategies (if implemented)
+- Query optimization through MongoDB Compass analysis

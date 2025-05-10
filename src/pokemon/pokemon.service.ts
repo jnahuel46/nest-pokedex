@@ -10,7 +10,6 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
-
 @Injectable()
 export class PokemonService {
   constructor(

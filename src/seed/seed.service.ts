@@ -2,12 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { PokeResponse } from './interfaces/poke-interfaces.interface';
 import { PokemonService } from '../pokemon/pokemon.service';
 import { FetchAdapter } from 'src/common/adapters/axios.adapter';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class SeedService {
   constructor(
     private readonly pokemonService: PokemonService,
     private readonly http: FetchAdapter,
+    private readonly configService: ConfigService,
+
   ) {}
 
   /**
@@ -24,7 +27,7 @@ export class SeedService {
 
     // Fetch Pokémon data from PokeAPI
     const response = await this.http.get<PokeResponse>(
-      'https://pokeapi.co/api/v2/pokemon?limit=440',
+      this.configService.get<string>('pokeapi'),
     );
     const data = response;
 
